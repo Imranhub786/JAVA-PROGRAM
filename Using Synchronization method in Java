@@ -1,0 +1,49 @@
+package monitor
+class MyData{
+   synchronized  public void display(String str)
+    {
+       
+            for(int i=0;i<str.length();i++)
+            {
+            System.out.print(str.charAt(i));
+            }
+        
+    }
+    
+}
+class Thread1 extends Thread
+{
+    MyData d;
+    Thread1 (MyData date)
+    {
+        d=date;
+    }
+    public void run()
+    {
+        d.display("WELCOME TO INDIA"+" ");
+    }
+}
+class Thread2 extends Thread
+{
+    MyData dat;
+    Thread2(MyData Time)
+    {
+        dat=Time;
+    }
+    public void run()
+    {
+        dat.display("RONALDO");
+    }
+}
+public class Monitor {
+    public static void main(String[] args) {
+        MyData obj=new MyData();
+        Thread1 t1=new Thread1(obj);
+        Thread2 t2=new Thread2(obj);
+        t1.start();
+        t2.start();
+                
+                
+    }
+    
+}
